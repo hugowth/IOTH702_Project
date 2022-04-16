@@ -89,7 +89,6 @@ try:
             sensor.when_in_range = door_closed
             sensor.when_out_of_range = door_not_close
             button.when_pressed = lock_switch
-            client.publish("servo/status", "unlock", 1)
             
     pause()
 #     while True:
