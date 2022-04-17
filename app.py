@@ -91,17 +91,7 @@ try:
             button.when_pressed = lock_switch
             
     pause()
-#     while True:
-#         value = "lock" if servo.value == 1.0 else "unlock"
-#         client.publish(
-#             "servo/status",
-#             value,
-#             1,
-#         )
-#         next_reading += INTERVAL
-#         sleep_time = next_reading - time.time()
-#         if sleep_time > 0:
-#             time.sleep(sleep_time)
+
 except KeyboardInterrupt:
     led.close()
     button.close()
