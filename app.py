@@ -55,14 +55,11 @@ def door_closed():
     print("door closed")
     time.sleep(1) # auto lock after 1 second
     control_servo("b'lock'")
-    client.publish("servo/status", "lock", 1)
 
 def door_not_close():
     # send mqtt message
     led.blink()
     print("door not close")
-    
-    client.publish("servo/status", "unlock", 1)
     
 def lock_switch():
     if servo.value == 1.0:
