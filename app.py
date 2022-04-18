@@ -79,13 +79,13 @@ try:
             led.blink()
             button.wait_for_press() # wait the button press after closed the door
             current = sensor.distance
-            led.off()
-            print("Initial setup completed")
             threshold_distance = current * 1.1 # add 10% for tolerance
             sensor.threshold_distance = threshold_distance
             sensor.when_in_range = door_closed
             sensor.when_out_of_range = door_not_close
             button.when_pressed = lock_switch
+            led.off()
+            print("Initial setup completed")
             
     pause()
 
