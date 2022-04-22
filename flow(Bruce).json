@@ -1,0 +1,223 @@
+[
+    {
+        "id": "672d08c4f356f511",
+        "type": "tab",
+        "label": "Project 702",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "671c4bf3e5379424",
+        "type": "ui_button",
+        "z": "672d08c4f356f511",
+        "name": "",
+        "group": "312c96f33cbda9ce",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Lock",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "lock",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "34b112e01a0df453"
+            ]
+        ]
+    },
+    {
+        "id": "0341f55a9c9aef90",
+        "type": "ui_button",
+        "z": "672d08c4f356f511",
+        "name": "",
+        "group": "312c96f33cbda9ce",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Unlock",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "unlock",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "34b112e01a0df453"
+            ]
+        ]
+    },
+    {
+        "id": "5973b5bb793a86ad",
+        "type": "ui_text",
+        "z": "672d08c4f356f511",
+        "group": "312c96f33cbda9ce",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Lock Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a1486a7845d0e99d",
+        "type": "mqtt in",
+        "z": "672d08c4f356f511",
+        "name": "",
+        "topic": "servo/status",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "ce6bfe76c21f8e79",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "5973b5bb793a86ad",
+                "c6818f8e505c222e"
+            ]
+        ]
+    },
+    {
+        "id": "34b112e01a0df453",
+        "type": "mqtt out",
+        "z": "672d08c4f356f511",
+        "name": "",
+        "topic": "servo/control",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "ce6bfe76c21f8e79",
+        "x": 550,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7019d55d2b647bb8",
+        "type": "email out",
+        "z": "672d08c4f356f511",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": false,
+        "name": "stam60@my.centennialcollege.ca",
+        "dname": "",
+        "sendfailedcontrib": "",
+        "messagesentcontrib": "",
+        "x": 820,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c6818f8e505c222e",
+        "type": "function",
+        "z": "672d08c4f356f511",
+        "name": "build email",
+        "func": "msg = {\n    topic: \"The latest status of the door lock\",\n    payload: msg.payload\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 360,
+        "wires": [
+            [
+                "766211ed15942605",
+                "7019d55d2b647bb8"
+            ]
+        ]
+    },
+    {
+        "id": "766211ed15942605",
+        "type": "debug",
+        "z": "672d08c4f356f511",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "312c96f33cbda9ce",
+        "type": "ui_group",
+        "name": "Project",
+        "tab": "eea68a06cdb829c1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ce6bfe76c21f8e79",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "eea68a06cdb829c1",
+        "type": "ui_tab",
+        "name": "Project 702",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
