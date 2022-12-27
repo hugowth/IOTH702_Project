@@ -11,4 +11,4 @@ gpiozero==1.6.2
 paho-mqtt==1.6.1
 pigpio==1.78
 rpi.gpio==0.7.1
-setuptools==62.1.0; python_version >= '3.7'
+setuptools==65.5.1; python_version >= '3.7'
